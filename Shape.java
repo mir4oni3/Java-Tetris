@@ -21,7 +21,7 @@ public class Shape {
 	}
 
 	public void moveDown() {
-		//proverqva dali e legalno da se premesti
+		//checks if it is legal to move
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).y + 3 > Main.frame.getHeight() - blockSize) {
 				return;
@@ -32,7 +32,7 @@ public class Shape {
 				}
 			}
 		}
-		//mesti
+		//moves
 		for (int i = 0; i < list.size(); i++) {
 			list.set(i, list.get(i).add(0, blockSize));
 		}
@@ -40,7 +40,7 @@ public class Shape {
 	}
 
 	public void moveUp() {
-		//proverqva dali e legalno da se premesti
+		//checks if it is legal to move
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).y - 3 < 0) {
 				return;
@@ -51,7 +51,7 @@ public class Shape {
 				}
 			}
 		}
-		//mesti
+		//moves
 		for (int i = 0; i < list.size(); i++) {
 			list.set(i, list.get(i).add(0, -blockSize));
 		}
@@ -59,7 +59,7 @@ public class Shape {
 	}
 
 	public void moveLeft() {
-		//proverqva dali e legalno da se premesti
+		//checks if it is legal to move
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).x - 3 < 0) {
 				return;
@@ -70,7 +70,7 @@ public class Shape {
 				}
 			}
 		}
-		//mesti
+		//moves
 		for (int i = 0; i < list.size(); i++) {
 			list.set(i, list.get(i).add(-blockSize, 0));
 		}
@@ -78,7 +78,7 @@ public class Shape {
 	}
 
 	public void moveRight() {
-		//proverqva dali e legalno da se premesti
+		//checks if it is legal to move
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).x + 3 > Main.frame.getWidth() - blockSize) {
 				return;
@@ -89,7 +89,7 @@ public class Shape {
 				}
 			}
 		}
-		//mesti
+		//moves
 		for (int i = 0; i < list.size(); i++) {
 			list.set(i, list.get(i).add(blockSize, 0));
 		}
@@ -98,12 +98,12 @@ public class Shape {
 
 	public boolean touches() {
 		try {
-				// proverqva dali shape e nai dolu
+				// checks if shape is in the bottom
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).y + 3 > Main.frame.getHeight() - blockSize) {
 					return true;
 				}
-				// proverqva dali pod tozi shape ima drug shape
+				// checks if there is a shape under this shape
 				for (int j = 0; j < Main.shapes.shapes.size(); j++) {
 					if (Math.abs(list.get(i).y - (Main.shapes.shapes.get(j).y - blockSize)) < 3
 							&& list.get(i).x == Main.shapes.shapes.get(j).x) {
